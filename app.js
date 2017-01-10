@@ -13,4 +13,6 @@ var myServer = http.createServer(function(request, response){
     console.log(request.url)
 
 })
+
+console.log('server is running...')
 myServer.listen(5000);

